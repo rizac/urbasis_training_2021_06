@@ -9,7 +9,7 @@ git clone https://github.com/rizac/urbasis_training_2021_06.git $PATH/urbasis_tr
 cd $PATH/urbasis_training_2021_06
 python3 -m venv ./env  # create Python virtualenv
 source ./env/bin/activate  # activate Python virtualenv
-pip install pip steuptools && pip install numpy && pip install obspy pandas jupyter
+pip install --upgrade pip setuptools && pip install numpy && pip install obspy pandas jupyter
 ```
 
 ## Run Jupyter examples:
