@@ -16,6 +16,6 @@ pip install --upgrade pip setuptools && pip install numpy && pip install obspy p
 
 In `$PATH/urbasis_training_2021_06` activate Python virtualenv (see above) adn then:
 ```
-jupyter notebook urbasis_training.ipynb
+jupyter notebook notebooks
 ```
 (when done, you can type `deactivate` to deactivate the Python virtualenv)
