@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# ESM token:
+esm_certif.txt
+
+# pycharm:
+.idea/
+
 # C extensions
 *.so
 
