@@ -14276,19 +14276,19 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>In this notebook, we will show some examples and snippets on working with web services and seismic libraries.</p>
 <p>Before getting into more details, let's quickly picture the overall framework of Information Technology (or IT, i.e. anything related to computing technology) in seismology</p>
-<h3 id="Programming-languages">Programming languages<a class="anchor-link" href="#Programming-languages">&#182;</a></h3><p>In recent year, three main programming languages are used in sesimology (and scientific computing in general): <a href="https://www.python.org">Python</a> (general-purpose language), <a href="https://www.r-project.org/">R</a> (environment for statistical computing and graphics, open source), <a href="https://www.mathworks.com/products/matlab.html">matlab</a> (non-open source platform for mathematical and technical computing, non open source)</p>
-<h3 id="Version-control-systems-(VCS)">Version control systems (VCS)<a class="anchor-link" href="#Version-control-systems-(VCS)">&#182;</a></h3><p>VCSs manage changes in your code. Of paticular importance when you want to easily collaborate with others, keep your code synchronized, move back and forth to different versions. <a href="https://git-scm.com/">git</a> is a de facto standard (not covering other VCSs here), not to be confused with its hosting/management web platforms, e.g. <a href="https://about.gitlab.com">gitlab</a> and <a href="https://github.com/">github</a>, <a href="https://bitbucket.org">bitbucket</a> among others</p>
-<p>Focusing from here on on Python only (Python 3. You are <a href="https://www.python.org/doc/sunset-python-2/">not using Python v2</a> right?)</p>
+<h3 id="Version-control-systems-(VCS)">Version control systems (VCS)<a class="anchor-link" href="#Version-control-systems-(VCS)">&#182;</a></h3><p>VCSs manage changes in your code. Of paticular importance when you want to easily collaborate with others, keep your code synchronized, move back and forth to different versions. <a href="https://git-scm.com/">git</a> is the most popular nowadays (not covering other VCSs here such as <code>svn</code>). A VCS has not to be confused with its hosting/management web platform, e.g. <a href="https://about.gitlab.com">gitlab</a> and <a href="https://github.com/">github</a>, <a href="https://bitbucket.org">bitbucket</a> among others</p>
 <h3 id="Editor-/-Integrated-Development-Environments-(IDE)">Editor / Integrated Development Environments (IDE)<a class="anchor-link" href="#Editor-/-Integrated-Development-Environments-(IDE)">&#182;</a></h3><p><img align="right" width='300' height="200" src="https://www.jetbrains.com/pycharm/img/screenshots/complexLook@2x.jpg"></p>
-<p>Text editors are the simplest and straighforward choice (as a bare minimum with syntax highlight to make the screen readable. E.g. <code>notepad++</code>, <code>sublime text</code>, <code>gedit</code>, <code>vim</code>, ...), IDEs, i.e. basically all-in-one tools with a text editor <strong>and</strong> several features for checking, debugging, executing code (e.g. <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>), efficiently showcase your work (this Jupyter Notebook), and many others that you can easily find online</p>
-<h3 id="Package-/-Environment-managers">Package / Environment managers<a class="anchor-link" href="#Package-/-Environment-managers">&#182;</a></h3><p>Package managers handle required external Python packages (aka dependencies), Environment managers create so-called <code>Virtualenv</code>s, i.e., clones of yopur Python installation isolated from the global Python interpreter of your OS, where you can install/uninstall safely any dependency. Standard way:</p>
-<div class="highlight"><pre><span></span>python3 -m venv <span class="nv">$path_to_my_environment</span> <span class="c1"># create Virtualenv</span>
-<span class="nb">source</span> <span class="nv">$path_to_my_environment</span>/bin/activate <span class="c1"># activate it</span>
-pip install package1 package2 ... <span class="c1"># install/uninstall dependencies</span>
-<span class="c1"># write your code, execute it and eventually:</span>
+<p>Text editors are the simplest and straighforward choice (as a bare minimum with syntax highlight to make the screen readable. E.g. <code>notepad++</code>, <code>sublime text</code>, <code>gedit</code>, <code>vim</code>, ...), IDEs, i.e. basically all-in-one tools with a text editor <strong>and</strong> several features for checking, debugging, executing code (e.g. <a href="https://www.jetbrains.com/pycharm/">PyCharm for Python</a>), efficiently showcase your work (this Jupyter Notebook), and many others that you can easily find online</p>
+<h3 id="Programming-languages">Programming languages<a class="anchor-link" href="#Programming-languages">&#182;</a></h3><p>Several porgramming languages are available in sesimology and scientific computing in general: <a href="https://www.python.org">Python</a> (general-purpose language), <a href="https://www.r-project.org/">R</a> (environment for statistical computing and graphics, open source), <a href="https://www.mathworks.com/products/matlab.html">matlab</a> (non-open source platform for mathematical and technical computing, non open source) and many others.</p>
+<p><strong>We will focus in the remaninder on Python 3 only</strong> (by the way, you are <a href="https://www.python.org/doc/sunset-python-2/">not using Python v2</a> right?)</p>
+<h3 id="Package-/-Environment-managers">Package / Environment managers<a class="anchor-link" href="#Package-/-Environment-managers">&#182;</a></h3><p>Environment managers create so-called <code>Virtualenv</code>s, i.e., clones of yopur Python installation isolated from the global Python interpreter of your OS, where you can install/uninstall safely any dependency. Package managers handle required external Python packages (aka dependencies) in the Python environment. There are solutions providing both package + environment manager, as <a href="https://www.anaconda.com/products/individual">Anaconda</a>, but later Python versions made quite easy to manage the two with <code>venv</code> and <code>pip</code> without additional tools. For instance, in a terminal:</p>
+<div class="highlight"><pre><span></span>python3 -m venv <span class="nv">$venv_path</span> <span class="c1"># create Virtualenv (once only operation)</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="nb">source</span> <span class="nv">$venv_path</span>/bin/activate <span class="c1"># activate it</span>
+<span class="c1"># do your work (code, execute, start a notebook, install/uninstall stuff with &#39;pip install &lt;package&gt;&#39;) and eventually:</span>
 deactivate <span class="c1"># deactivate virtual env</span>
 </pre></div>
-<p>Alternatively, there are solutions providing both package + environment manager, as <a href="https://www.anaconda.com/products/individual">Anaconda</a></p>
+<p>Alternatively,</p>
 <h3 id="Code-quality">Code quality<a class="anchor-link" href="#Code-quality">&#182;</a></h3><p>(no, <a href="https://www.researchgate.net/publication/265130918_Better_Software_Better_Research">this isn't an ornament</a>. As a rule of thumb, the bigger the project, the more quality check is required)</p>
 <ul>
 <li>PEP8 (code style guidelines) <a href="https://gist.github.com/RichardBronosky/454964087739a449da04">cheatsheet here, little bit outdated but still ok</a></li>
@@ -14299,7 +14299,7 @@ deactivate <span class="c1"># deactivate virtual env</span>
 <ul>
 <li><a href="https://numpy.org/doc/stable/user/whatisnumpy.html">numpy</a> scientific package for fast computing. It basically allows C-comparable speed when operating on numeric arrays (not reachable with normal Python <code>for loop</code>). As such, it basically required by all scientific computing libraries, e.g.:</li>
 <li><a href="https://docs.obspy.org/">ObsPy</a>: framework for processing seismological data. Nice collection of notebooks <a href="https://github.com/obspy/docs">here</a>)</li>
-<li><a href="https://pandas.pydata.org/docs/">pandas</a>: library for data manipulation and analysis, in particular tabular data (similar to R's DataFrame for those familiar to it)</li>
+<li><a href="https://pandas.pydata.org/docs/">pandas</a>: library for data manipulation and analysis, in particular tabular data (similar to R's DataFrame for those familiar with it)</li>
 <li>Machine / Deep Learning:<ul>
 <li><a href="https://scikit-learn.org/stable/user_guide.html">scikit-learn</a>: machine learning library</li>
 <li><a href="https://keras.io/guides/">Keras</a> (based on <a href="https://www.tensorflow.org/">tensorflow</a>): deep learning library</li>
@@ -14315,23 +14315,23 @@ deactivate <span class="c1"># deactivate virtual env</span>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">JSON</td>
-<td style="text-align:left">popular format for internet data transferred data</td>
+<td style="text-align:left"><a href="https://www.w3schools.com/js/js_json_intro.asp">JSON</a></td>
+<td style="text-align:left">popular format for data transferred through internet</td>
 <td style="text-align:left"><a href="https://docs.python.org/3/library/json.html">json</a> (*)</td>
 </tr>
 <tr>
-<td style="text-align:left">XML</td>
+<td style="text-align:left"><a href="https://www.w3schools.com/xml/xml_whatis.asp">XML</a></td>
 <td style="text-align:left">station metadata/event</td>
 <td style="text-align:left"><a href="https://docs.python.org/3/library/xml.etree.elementtree.html">xmltree</a> (*)</td>
 </tr>
 <tr>
-<td style="text-align:left">miniSEED</td>
+<td style="text-align:left"><a href="http://ds.iris.edu/ds/nodes/dmc/data/formats/miniseed/">miniSEED</a></td>
 <td style="text-align:left">seismic waveform format</td>
 <td style="text-align:left"><a href="https://docs.obspy.org/">ObsPy</a> (and others)</td>
 </tr>
 <tr>
-<td style="text-align:left">HDF</td>
-<td style="text-align:left"><a href="https://www.hdfgroup.org/solutions/hdf5/">file formats designed to store and organize large amounts of data (including tabular data)</a></td>
+<td style="text-align:left"><a href="https://www.hdfgroup.org/solutions/hdf5/">HDF</a></td>
+<td style="text-align:left">store and organize large amounts of data (including tabular data)</td>
 <td style="text-align:left"><a href="https://pandas.pydata.org/docs/">pandas</a>, <a href="https://www.pytables.org/">pytables</a></td>
 </tr>
 <tr>
@@ -14493,36 +14493,23 @@ USP         http://sismo.iag.usp.br
 <h2 id="Events-(FDSN)">Events (FDSN)<a class="anchor-link" href="#Events-(FDSN)">&#182;</a></h2><p>(Full spec <a href="https://www.fdsn.org/webservices/fdsnws-event-1.2.pdf">here</a>)</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">event_ws_url</span> <span class="o">=</span> <span class="n">URL_MAPPINGS</span><span class="p">[</span><span class="s1">&#39;IRIS&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/fdsnws/event/1/query&quot;</span>
-<span class="c1"># (You can change this to another event web service, e.g. &#39;EMSC&#39;) </span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># https://service.iris.edu/fdsnws/event/1/query?starttime=2019-07-04T00:00:00&amp;endtime=T00:00:00&amp;minmag=6.4&amp;format=text</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Build URL</span>
+<span class="n">event_ws_url</span> <span class="o">=</span> <span class="n">URL_MAPPINGS</span><span class="p">[</span><span class="s1">&#39;IRIS&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/fdsnws/event/1/query&quot;</span>
+<span class="c1"># query parameters:</span>
 <span class="n">starttime</span> <span class="o">=</span> <span class="s2">&quot;2019-07-04T00:00:00&quot;</span>
 <span class="n">endtime</span> <span class="o">=</span> <span class="s2">&quot;2019-07-08&quot;</span>
 <span class="n">minlat</span> <span class="o">=</span> <span class="mi">34</span>
 <span class="n">minmag</span> <span class="o">=</span> <span class="mf">6.4</span>
 <span class="c1"># Make event_catalog_url FDSN:</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">?starttime=</span><span class="si">%s</span><span class="s2">&amp;endtime=</span><span class="si">%s</span><span class="s2">&amp;minlat=</span><span class="si">%s</span><span class="s2">&amp;minmag=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">event_ws_url</span><span class="p">,</span> <span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">minlat</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">minmag</span><span class="p">))</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">?starttime=</span><span class="si">%s</span><span class="s2">&amp;endtime=</span><span class="si">%s</span><span class="s2">&amp;minlat=</span><span class="si">%d</span><span class="s2">&amp;minmag=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">event_ws_url</span><span class="p">,</span> <span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="p">,</span> <span class="n">minlat</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">minmag</span><span class="p">))</span>
 <span class="c1"># with Python 3.7, you can also use f-strings:</span>
-<span class="c1"># url = f&#39;{event_ws_url}/fdsnws/event/1/query?starttime={starttime}&amp;endtime={endtime}&amp;minlat={str(minlat)}&amp;minmag={str(minmag)}&#39;</span>
+<span class="c1"># url = f&#39;{event_ws_url}/fdsnws/event/1/query?starttime={starttime}&amp;endtime={endtime}&amp;minlat={minlat:d}&amp;minmag={str(minmag)}&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 
@@ -14566,7 +14553,7 @@ USP         http://sismo.iag.usp.br
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
@@ -14609,19 +14596,19 @@ b&#39;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;\n&lt;q:quakem
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This illustrative example is generally of less utility, the data above should be parsed it with <a href="https://docs.python.org/3/library/xml.etree.elementtree.html">dedicated standard libraries</a>, which is the reason why it is preferable to read standard formats (XML and miniSEED) with ObsPy.</p>
-<p>Conversely, if you do not need the level of details provided by the stabdard formats, you can still use the method above to fetch data in text format:</p>
+<p>This illustrative example is generally of less utility, the data above should be parsed with <a href="https://docs.python.org/3/library/xml.etree.elementtree.html">dedicated standard libraries</a>, which is the reason why it is preferable to read standard formats (XML and miniSEED) with ObsPy.</p>
+<p>However, if you do not need the level of details provided by the standard formats, you can still use the method above to fetch data in text format:</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
 
-<span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;&amp;format=text&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">)</span>  <span class="c1"># &lt;- see format=text parameter</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;&amp;format=text&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">)</span>  <span class="c1"># &lt;- only change here is this &#39;format=text&#39; query parameter</span>
 <span class="k">with</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Response content (text):</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -14665,7 +14652,7 @@ b&#39;#EventID | Time | Latitude | Longitude | Depth/km | Author | Catalog | Con
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14795,7 +14782,7 @@ b&#39;#EventID | Time | Latitude | Longitude | Depth/km | Author | Catalog | Con
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">obspy</span>
@@ -14820,7 +14807,7 @@ For instance, let's inspect the first event:</p>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">catalog</span><span class="p">:</span>
@@ -14920,14 +14907,16 @@ print('DataFrame size (b): %d' % dfr.memory_usage(True).sum())
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">obspy</span> <span class="kn">import</span> <span class="n">UTCDateTime</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">obspy</span> <span class="kn">import</span> <span class="n">UTCDateTime</span>
+
+<span class="c1"># Build station query URL</span>
 
 <span class="c1"># get datacenter URL:</span>
 <span class="n">station_ws_url</span> <span class="o">=</span> <span class="n">URL_MAPPINGS</span><span class="p">[</span><span class="s1">&#39;IRIS&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/fdsnws/station/1/query&quot;</span>
-
 <span class="c1"># get time bounds:</span>
 <span class="n">starttime</span> <span class="o">=</span> <span class="n">UTCDateTime</span><span class="p">(</span><span class="s2">&quot;2019-07-04T17:33:49&quot;</span><span class="p">)</span>  <span class="c1"># second event in the table above (mag 7.4)</span>
 <span class="c1"># we used UTCDateTime because it is the ObsPy standard for date-times, and allows us to do operations</span>
@@ -14938,26 +14927,21 @@ print('DataFrame size (b): %d' % dfr.memory_usage(True).sum())
 <span class="n">sta</span> <span class="o">=</span> <span class="s2">&quot;AD?&quot;</span>  <span class="c1"># station</span>
 <span class="n">loc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># location</span>
 <span class="n">cha</span> <span class="o">=</span> <span class="s2">&quot;HN?,HH?&quot;</span>  <span class="c1"># channel</span>
-
 <span class="c1"># now convert back starttime and endtime to their ISO formatted strings</span>
 <span class="n">start_s</span> <span class="o">=</span> <span class="n">starttime</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
 <span class="n">end_s</span> <span class="o">=</span> <span class="n">endtime</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
-
+<span class="c1"># spatial coordinates around the event (2 deg in all directions):</span>
 <span class="n">minlat</span> <span class="o">=</span> <span class="n">evt_lat</span> <span class="o">-</span> <span class="mi">2</span>
 <span class="n">maxlat</span> <span class="o">=</span> <span class="n">evt_lat</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="n">minlon</span> <span class="o">=</span> <span class="n">evt_lon</span> <span class="o">-</span> <span class="mi">2</span>
 <span class="n">maxlon</span> <span class="o">=</span> <span class="n">evt_lon</span> <span class="o">+</span> <span class="mi">2</span>
 
-
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Request URL (GET):</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">url</span> <span class="o">=</span> <span class="n">station_ws_url</span> <span class="o">+</span> <span class="s2">&quot;?net=</span><span class="si">%s</span><span class="s2">&amp;sta=</span><span class="si">%s</span><span class="s2">&amp;loc=</span><span class="si">%s</span><span class="s2">&amp;cha=</span><span class="si">%s</span><span class="s2">&amp;start=</span><span class="si">%s</span><span class="s2">&amp;end=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> \
     <span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">sta</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">cha</span><span class="p">,</span> <span class="n">start_s</span><span class="p">,</span> <span class="n">end_s</span><span class="p">)</span>
-
-<span class="c1"># url = station_ws_url + &quot;?net=%s&amp;sta=%s&amp;loc=%s&amp;cha=%s&amp;start=%s&amp;end=%s&amp;minlat=%s&amp;maxlat=%s&amp;minlon=%s&amp;maxlon=%s&quot; % \</span>
-<span class="c1">#     (net, sta, loc, cha, start_s, end_s, minlat, maxlat, minlon, maxlon)</span>
-
-<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># Query data:</span>
 <span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;&amp;format=text&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -14967,7 +14951,8 @@ print('DataFrame size (b): %d' % dfr.memory_usage(True).sum())
 <span class="n">b</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 <span class="n">dfr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">dfr</span><span class="p">)</span>
-<span class="c1"># load more level of details (level=channel):</span>
+
+<span class="c1"># Query data (level=channel: higher level of details):</span>
 <span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;&amp;format=text&amp;level=channel&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -15257,8 +15242,7 @@ Response content (DataFrame), request level=channel (more details than above):
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The <code>level</code> parameter (default 'station') controls the amount of detail included in the returned FDSN StationXML results with the following hierarchy: <code>network</code>, <code>station</code>, <code>channel</code> and <code>response</code> (the latter is necessary if you want to remove the instrumental response from a waveform (see examples below).</p>
-<p>For example, if the <code>station</code> level is requested the Station elements will be included in the results but not Channel or Response related information.</p>
+<p>The <code>level</code> parameter (default 'station') controls the amount of detail included in the returned FDSN StationXML results with the following hierarchy: <code>network</code>, <code>station</code>, <code>channel</code> and <code>response</code> (the latter is necessary if you want to remove the instrumental response from a waveform, see examples below). For example, if the <code>station</code> level is requested the Station elements will be included in the results but not Channel or Response related information.</p>
 
 </div>
 </div>
@@ -15269,23 +15253,24 @@ Response content (DataFrame), request level=channel (more details than above):
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># with FDSN station / dataselect web services, you can issue also POST request</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Simple example of POST request (different code, same response as above)&#39;</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;format=text&#39;</span>  <span class="c1"># add parameters, and then a list of stations:</span>
-<span class="n">data</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">level=station&#39;</span>  <span class="c1"># add parameters, and then a list of stations:</span>
+<span class="c1"># The post data is composed by parameters first (in this case format and level)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;format=text&#39;</span>  
+<span class="n">data</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">level=station&#39;</span>
+<span class="c1"># and then a list of stations (only 1 station queried in this case):</span>
 <span class="n">data</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">net</span> <span class="ow">or</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">sta</span> <span class="ow">or</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">loc</span> <span class="ow">or</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">cha</span> <span class="ow">or</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">start_s</span><span class="p">,</span> <span class="n">end_s</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Requesting data at </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">station_ws_url</span> <span class="o">+</span> <span class="s1">&#39;with POST data: </span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="s1">---&#39;</span> <span class="o">%</span> <span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Requesting data at </span><span class="si">%s</span><span class="s1"> with POST DATA:&#39;</span> <span class="o">%</span> <span class="n">station_ws_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
 <span class="c1"># issue the reuest as above, simply add the &#39;data&#39; parameter (endcode the string as bytes because this is the</span>
 <span class="c1"># type needed by the Request object):</span>
-<span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">station_ws_url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">station_ws_url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span>  <span class="c1"># (data.encode converts str to bytes)</span>
 <span class="k">with</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Response content (text):</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Response content (text, same as GET request above):</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 
@@ -15306,15 +15291,12 @@ Response content (DataFrame), request level=channel (more details than above):
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Simple example of POST request (different code, same response as above)
-Requesting data at http://service.iris.edu/fdsnws/station/1/querywith POST data: 
----
+<pre>Requesting data at http://service.iris.edu/fdsnws/station/1/query with POST DATA:
 format=text
 level=station
 CI AD? -- HN?,HH? 2019-07-04T17:33:49 2019-07-04T18:33:49
----
 
-Response content (text):
+Response content (text, same as GET request above):
 
 b&#39;#Network | Station | Latitude | Longitude | Elevation | SiteName | StartTime | EndTime \nCI|ADO|34.550461|-117.433907|908.0|Adelanto Receiving|2000-08-09T00:00:00|\n&#39;
 </pre>
@@ -15334,7 +15316,7 @@ b&#39;#Network | Station | Latitude | Longitude | Elevation | SiteName | StartTi
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">obspy.clients.fdsn</span> <span class="kn">import</span> <span class="n">Client</span>
@@ -15342,11 +15324,11 @@ b&#39;#Network | Station | Latitude | Longitude | Elevation | SiteName | StartTi
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s2">&quot;IRIS&quot;</span><span class="p">)</span>
 
-<span class="c1">#Approach 1: using client object as above:</span>
+<span class="c1"># Approach 1: using client object as above:</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reading inventory with client object</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">inventory1</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_stations</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">net</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">sta</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">cha</span><span class="p">,</span>
-                          <span class="n">starttime</span><span class="o">=</span><span class="n">UTCDateTime</span><span class="p">(</span><span class="n">start_s</span><span class="p">),</span> <span class="n">endtime</span><span class="o">=</span><span class="n">UTCDateTime</span><span class="p">(</span><span class="n">end_s</span><span class="p">),</span>
-                          <span class="n">level</span><span class="o">=</span><span class="s1">&#39;response&#39;</span><span class="p">)</span>
+                                 <span class="n">starttime</span><span class="o">=</span><span class="n">UTCDateTime</span><span class="p">(</span><span class="n">start_s</span><span class="p">),</span> <span class="n">endtime</span><span class="o">=</span><span class="n">UTCDateTime</span><span class="p">(</span><span class="n">end_s</span><span class="p">),</span>
+                                 <span class="n">level</span><span class="o">=</span><span class="s1">&#39;response&#39;</span><span class="p">)</span>
 
 <span class="c1"># Approach 2: using read_inventory (url with GET method):</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reading inventory with read_inventory</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -15395,14 +15377,14 @@ Reading inventory with read_inventory
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Dataselect-/-waveforms-(FDSN)">Dataselect / waveforms (FDSN)<a class="anchor-link" href="#Dataselect-/-waveforms-(FDSN)">&#182;</a></h2><p>(Full spec <a href="https://www.fdsn.org/webservices/fdsnws-dataselect-1.1.pdf">here</a>)</p>
-<p>Fetching waveforms with Python standard libraries (getting raw bytes) does not make much sense: the data is formatted in very specific formats (a de facto standard is nowadays the <a href="https://www.gfz-potsdam.de/en/section/geophysical-imaging/infrastructure/geophysical-instrument-pool-potsdam-gipp/documents/data-format/">SEED/miniSEED format</a>) and dedicated libraries are required. In this case, we illustrate how to load waveform data with ObsPy and work with the associated <a href="https://docs.obspy.org/tutorial/code_snippets/reading_seismograms.html#reading-seismogramms">Stream</a> objects</p>
+<p>Fetching waveforms with Python standard libraries (getting raw bytes) does not make much sense: the data has very specific formats (a de facto standard is nowadays the <a href="https://www.gfz-potsdam.de/en/section/geophysical-imaging/infrastructure/geophysical-instrument-pool-potsdam-gipp/documents/data-format/">SEED/miniSEED format</a>) and dedicated libraries are required. In this case, we illustrate how to load waveform data with ObsPy only, and work with the associated <a href="https://docs.obspy.org/tutorial/code_snippets/reading_seismograms.html#reading-seismogramms">Stream</a> object</p>
 <h3 id="With-ObsPy">With ObsPy<a class="anchor-link" href="#With-ObsPy">&#182;</a></h3><p>(Full notebook <a href="https://github.com/obspy/docs/blob/master/workshops/2017-10-25_iris_stcu/ObsPy%20Tutorial/03_waveform_data-with_solutions.ipynb">here</a>. For downloading restricted data, e.g. using a token from <a href="https://www.orfeus-eu.org/data/eida/nodes/">EIDA</a>, see <a href="https://docs.obspy.org/packages/autogen/obspy.clients.fdsn.client.Client.set_eida_token.html">here</a>)</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">obspy.clients.fdsn</span> <span class="kn">import</span> <span class="n">Client</span>
@@ -15410,11 +15392,7 @@ Reading inventory with read_inventory
 <span class="n">starttime</span> <span class="o">=</span> <span class="n">evt_time</span> <span class="o">+</span> <span class="mi">20</span>
 <span class="n">endtime</span> <span class="o">=</span> <span class="n">starttime</span> <span class="o">+</span> <span class="mi">200</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s2">&quot;IRIS&quot;</span><span class="p">)</span>
-
-<span class="c1"># in case of help, uncomment:</span>
-<span class="c1"># help(client.get_waveforms)</span>
-
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s2">&quot;IRIS&quot;</span><span class="p">)</span> <span class="c1"># as always, n case of help, typoe: help(client.get_waveforms)</span>
 
 <span class="c1"># Download stream in count units (no response removed yet):</span>
 <span class="n">stream</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_waveforms</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">net</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="s2">&quot;ADO&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">cha</span><span class="p">,</span> 
@@ -15442,19 +15420,19 @@ Reading inventory with read_inventory
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Removing the instrumental response (inplace)&#39;</span><span class="p">)</span>
 
 <span class="c1"># What we are about to do is an INPLACE operation, meaning that the data array</span>
 <span class="c1"># of each Trace will be PERMANENTLY modified. This is a COMMON feature in MOST</span>
-<span class="c1"># Stream/Trace operation, pay attention to it.</span>
+<span class="c1"># Stream/Trace operation, pay attention to it!</span>
 
 <span class="c1"># In this context, it would mean that, if for some reason we need</span>
 <span class="c1"># the original Stream after response removal, we would need to re-download it.</span>
-<span class="c1"># A common procedure is to store beforehand a copy of the Stream before any inplace operation:</span>
-<span class="c1"># stream_raw = stream.copy()</span>
+<span class="c1"># A common procedure is to store beforehand a copy of the Stream before any inplace operation, e.g.:</span>
+<span class="c1"># stream_original = stream.copy()</span>
 <span class="c1"># Or perform inplace operations on a copy of the Trace/Stream:</span>
 <span class="n">stream_remresp</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">remove_response</span><span class="p">(</span><span class="n">inventory1</span><span class="p">)</span>
 
@@ -15519,7 +15497,7 @@ Stream traces (note clipped signal for velocimeters *H* with strong earthquakes)
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -15723,14 +15701,14 @@ Stream traces (note clipped signal for velocimeters *H* with strong earthquakes)
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urbasis_test_module</span> <span class="k">as</span> <span class="nn">utm</span>
-<span class="kn">import</span> <span class="nn">importlib</span>
-
-<span class="c1"># if you make changes to your module, re-import it:</span>
-<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">utm</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urbasis_test_module</span> <span class="k">as</span> <span class="nn">utm</span>  <span class="c1"># &lt;- user defined module in this path</span>
+<span class="c1"># if you make changes to a custom Python module, to see the changes here you need to re-load it:</span>
+<span class="c1"># import importlib</span>
+<span class="c1"># importlib.reload(utm)</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="c1"># smoothed ampspec:</span>
 <span class="n">feqs</span><span class="p">,</span> <span class="n">e_ampspec_smooth</span> <span class="o">=</span> <span class="n">utm</span><span class="o">.</span><span class="n">smoothed_ampspec</span><span class="p">(</span><span class="n">e_trace_trimmed</span><span class="p">)</span>
@@ -15891,7 +15869,7 @@ awk -F<span class="s2">&quot;|&quot;</span> <span class="s1">&#39;NR&gt;1{print 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
@@ -16087,7 +16065,7 @@ Response content (converted to DataFrame):
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
@@ -16105,23 +16083,22 @@ Response content (converted to DataFrame):
     <span class="k">with</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
         <span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-    <span class="c1">## Now you can save the file, e.g.:</span>
-    <span class="c1"># outfile = str(ev_id) + &#39;.ascii.zip&#39;</span>
-    <span class="c1"># print(&#39;Downloading to %s&#39; % outfile)</span>
+    <span class="c1">## Now you can save the downloaded content to file, e.g.:</span>
+    <span class="c1"># outfile = str(ev_id) + &#39;.mseed.zip&#39;</span>
     <span class="c1"># with open(outfile, &#39;wb&#39;) as r:</span>
     <span class="c1">#    r.write(content)</span>
     
-    <span class="c1"># Or, depending on your needs, it might be more efficient to avoid</span>
-    <span class="c1"># saving into file for reoprning it. For instance, le&#39;t plot</span>
-    <span class="c1"># the waveform data:</span>
+    <span class="c1"># Or, if you do not need to save the data but process it, let&#39;s</span>
+    <span class="c1"># read it into a Stream object:</span>
     <span class="n">traces</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">zfile</span> <span class="o">=</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">content</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>  <span class="c1"># create a ZipFile from bytes data (in memory, not from disk)</span>
+        <span class="n">zfile</span> <span class="o">=</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">content</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>  <span class="c1"># create a ZipFile from bytes data (from memory, not from disk)</span>
         <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">zfile</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
             <span class="k">with</span> <span class="n">zfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">as</span> <span class="n">myfile</span><span class="p">:</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">myfile</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-                <span class="n">stream</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;MSEED&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">stream</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;MSEED&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># append first (and only) Trace to our `stream` object</span>
+        <span class="c1"># now you can work with your Stream ... (we just print its string representation here)</span>
         <span class="nb">print</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
@@ -16172,7 +16149,7 @@ Exiting (showing first Trace only)
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
@@ -16180,10 +16157,16 @@ Exiting (showing first Trace only)
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">obspy</span> <span class="kn">import</span> <span class="n">Stream</span><span class="p">,</span> <span class="n">Trace</span><span class="p">,</span> <span class="n">UTCDateTime</span>
 
-<span class="c1"># define a function to read ESM formatted data:</span>
-<span class="k">def</span> <span class="nf">read_esm_zipfile</span><span class="p">(</span><span class="n">zipfile</span><span class="p">):</span>
+<span class="c1"># define a function to read ESM formatted data</span>
+<span class="c1"># (this could also go into a separate Python module):</span>
+<span class="k">def</span> <span class="nf">read_esm_ascii</span><span class="p">(</span><span class="n">zipfile</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DOC HERE</span>
+<span class="sd">    Read downloaded esm zip file in ascii format, extracting all waveforms data</span>
+<span class="sd">    </span>
+<span class="sd">    :return: a dict[waveform_name, dict[property_name, property_value]].</span>
+<span class="sd">        For each waveform, the property names are those specified in the ESM format</span>
+<span class="sd">        (https://esm-db.eu/#/documents/user_manual) plus the property &#39;waveform&#39; </span>
+<span class="sd">        that returns the waveform data as numpy array </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">all_data</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
@@ -16213,19 +16196,17 @@ Exiting (showing first Trace only)
     <span class="k">with</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
         <span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-    <span class="c1">## Now you can save the file, e.g.:</span>
+    <span class="c1">## Now you can save the downloaded content to file, e.g.:</span>
     <span class="c1"># outfile = str(ev_id) + &#39;.ascii.zip&#39;</span>
-    <span class="c1"># print(&#39;Downloading to %s&#39; % outfile)</span>
     <span class="c1"># with open(outfile, &#39;wb&#39;) as r:</span>
     <span class="c1">#    r.write(content)</span>
     
-    <span class="c1"># Or, depending on your needs, it might be more efficient to avoid</span>
-    <span class="c1"># saving into file for reoprning it. This code snippet below quickly builds</span>
-    <span class="c1"># a Trace object from the ascii data (for more elegant or clean solutions,</span>
-    <span class="c1"># check the ASCII specification on the ESM site)</span>
+    <span class="c1"># Or, if you do not need to save the data but process it, let&#39;s</span>
+    <span class="c1"># read it into a Stream object (quick and dirty conversion below, there might be a better</span>
+    <span class="c1"># way to do it, check ESM site in case):</span>
     <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">()</span>
     <span class="n">zfile</span> <span class="o">=</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">content</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>  <span class="c1"># create a ZipFile from bytes data (in memory, not from disk)</span>
-    <span class="n">waveforms_data</span> <span class="o">=</span> <span class="n">read_esm_zipfile</span><span class="p">(</span><span class="n">zfile</span><span class="p">)</span>
+    <span class="n">waveforms_data</span> <span class="o">=</span> <span class="n">read_esm_ascii</span><span class="p">(</span><span class="n">zfile</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">waveforms_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="c1"># parse starttime (str) into a datetime object:</span>
         <span class="n">starttime_str</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;DATE_TIME_FIRST_SAMPLE_YYYYMMDD_HHMMSS&#39;</span><span class="p">]</span>
