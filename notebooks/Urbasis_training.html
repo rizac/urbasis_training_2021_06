@@ -14401,7 +14401,15 @@ deactivate <span class="c1"># deactivate virtual env</span>
 </tr>
 </tbody>
 </table>
-<p>The request is usually performed via client software such as command line applications (e.g. <a href="https://www.gnu.org/software/wget/">wget</a> or <a href="https://curl.se/">curl</a>), web portal (see e.g. <a href="https://www.seismicportal.eu/fdsn-wsevent.html">ESCM</a>), or custom code implemented with Programming language libraries (e.g., in Python, the <a href="https://docs.python.org/3/library/urllib.request.html#module-urllib.request">builtin urrlib package</a> or the <a href="https://docs.obspy.org/">seismic ObsPy library</a>). Note that, as said above, you can always type a GET URL in your browser: this is obviously quite cumbersome way to fetch data, but it might be useful sometimes to quickly test a the received response</p>
+<p>The request is usually performed</p>
+<ul>
+<li>via client software such as command line applications (e.g. <a href="https://www.gnu.org/software/wget/">wget</a>, <a href="https://curl.se/">curl</a> or more seismological-oriented tools such as <a href="https://geofon.gfz-potsdam.de/software/">fdsn scripts and stream2segment</a>)</li>
+<li>web portal (See e.g. <a href="http://eida.gfz-potsdam.de/webdc3/">WebDC3</a>, <a href="https://www.seismicportal.eu/">ESCM</a> among other seismological tools)</li>
+<li>custom code implemented with Programming language libraries (e.g., in Python, the <a href="https://docs.python.org/3/library/urllib.request.html#module-urllib.request">builtin urrlib package</a> or the <a href="https://docs.obspy.org/">seismic ObsPy library</a>)</li>
+</ul>
+<p>Note that, as said above, you can always type a GET URL in your browser: this is obviously quite cumbersome way to fetch data, but it might be useful sometimes to quickly test a the received response</p>
+<!-- [ESCM](https://www.seismicportal.eu/fdsn-wsevent.html)-->
+
 <h3 id="Response">Response<a class="anchor-link" href="#Response">&#182;</a></h3><p>The server response is composed of a status code, a header and a message body (e.g. XML, JSON, plain text, HTML).</p>
 <p>The response body depends on the specification of the web service. In seismology, we usually differentiate between three main catagories:</p>
 <ul>
