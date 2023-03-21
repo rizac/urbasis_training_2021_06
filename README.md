@@ -1,6 +1,6 @@
 # urbasis_training_2021_06
 
-## Intall
+## Install
 
 Given a root directory of your choiche (`$PATH`)
 
